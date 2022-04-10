@@ -1,0 +1,130 @@
+You can add global styles to this file,
+and also import other style files html,
+body {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* grid-gap: 20px;  */
+  /* background: greenyellow; */
+  background-image: linear-gradient(red, orange, red);
+  margin: 4px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  grid-template-rows: 4vh 80vh 12vh;
+  grid-template-areas:
+    "C L"
+    "T L"
+    "R .";
+}
+
+header {
+  justify-content: space-around;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  grid-area: C;
+}
+
+aside {
+  display: grid;
+  align-items: flex-end;
+  /* background: green; */
+  grid-area: L;
+}
+
+aside .divinos{
+  display: grid;
+  grid-template-columns: 0.3fr 0.3fr 0.3fr;
+  justify-content: space-evenly;
+}
+
+.fire{
+  grid-column: 1;
+  height: 100px;
+  margin-left: 5px;
+
+}
+
+.ice{
+  height: 100px;
+  background: blue;
+  grid-column: 2;
+  justify-self: center;
+}
+
+.thunder{
+  height: 100px;
+  grid-column: 3;
+}
+
+
+.pokes {
+  display: grid;
+}
+
+.poke {
+  border: 5px solid black;
+  border-radius: 15px;
+  margin: 5px;
+  /* width: 5vw; */
+}
+.poke img {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+}
+
+main {
+  background: white;
+  grid-area: T;
+  border: 8px solid black;
+  border-radius: 25px;
+  margin: 5px;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: 0.5fr 0.4fr;
+  /* background: gray; */
+  grid-area: R;
+  align-content: center;
+  justify-content: center;
+}
+
+.tBadges {
+  display: flex;
+  /* background: pink; */
+  border: 5px solid black;
+  border-radius: 15px;
+  height: 75%;
+  width: 85%;
+  align-self: center;
+  align-items: center;
+  margin: 10px 0px 0px 10px;
+  justify-content: space-evenly;
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  border: 25px solid darkgrey;
+  border-radius: 15px;
+  height: 5px;
+}
+
+.info {
+  display: flex;
+  border: 5px solid black;
+  border-radius: 15px;
+  height: 80%;
+  width: 90%;
+  margin: 2px 2px 0px 50px;
+}
+
+.info img{
+  height: 60px;
+}
