@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Pokemon</title>
+    <meta charset="UTF-8">    
   </head>
   <body>    
     <link ref="" rel="stylesheet" />
