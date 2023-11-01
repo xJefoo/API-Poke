@@ -1,0 +1,428 @@
+<html>
+<head>
+	<meta charset="utf-8" http-equiv="refresh" content="5000" />
+	<meta name="author" content="TheOwlsGo">
+	<title>Pokémon Team Display (CL)</title>
+	<style>
+		body {
+		  margin: 0;
+		}
+		.container {
+		  background-image: url('_resources/DS2.png');
+		  background-repeat: no-repeat;
+		  background-size: 1280px 720px;
+		  font-family: Tahoma;
+		  width: 1280px;
+		  height: 720px;
+		  text-align: left;
+		  top: 0;
+		  left: 0;
+		  padding: 40px 50px;
+		  /*border: 1px solid;*/
+		}
+		
+		br.a {line-height:24px;}
+		br.b {line-height:5px;}
+		
+		.color {
+		  font-weight: bold;
+		  text-shadow: 0px 0px 4px #FFFFFF;
+		  text-transform: uppercase;
+		  display: inline;
+		}
+
+		button {
+		  height: 25px;
+		  width: 85px;
+		}  
+
+		.blue {
+		  font-family: "Berlin Sans FB", Tahoma;
+		  font-size: 14px;
+		  background-color: #00CCD9;
+		  color: #FFFFFF;
+		  box-shadow: 10px 10px 5px grey;box-shadow: 2px 2px 3px grey;
+		  cursor: pointer;
+		  border: none;
+		  border-radius: 10px;
+		 }
+		 
+		.large {
+		  height: 25px;
+		  width: 225px;
+		}
+
+		.select {
+		  position: fixed;
+		  top: 31px;
+		  left: 500px;
+		  height: 25px;
+		  width: 225px;
+		}
+		
+		div.btn {
+		  position: fixed;
+		  height: 76px;
+		  left: 825px;
+		  box-sizing: border-box;
+		  background: none;
+		  background-color: none;
+		  padding: 12px 25px 0 0;
+		  max-width: 200px;
+		  /*border: 1px solid*/
+		 
+		}
+		
+		div.pokemon {
+		  float: left;
+		  position: fixed;
+		  display: block;
+		  left: 940px;
+		  height: 76px;
+		  min-width: 76px;		
+		  max-width: 76px;
+		  white-space: nowrap;
+		  /*border: 1px solid yellow;*/
+		}
+
+		.pokemon img {
+		  vertical-align: middle;
+		  display: inline-block;
+		  position: absolute;
+		  overflow: visible;
+		  transform: translate(-50%) scale(1.2);
+		  -webkit-transform: translate(-50%) scale(1.2);
+		  -moz-transform: translate(-50%) scale(1.2);
+		  top: 0;
+		  bottom: 0;
+		  left: 50%;
+		  margin: auto;
+		  /*border: 1px solid red;*/
+		}
+
+		.n1 {top: 10px;}
+		.n2 {top: 86px;}
+		.n3 {top: 162px;}
+		.n4 {top: 238px;}
+		.n5 {top: 314px;}
+		.n6 {top: 390px;}
+
+   /*INICIO DO AUTOCOMPLETE PUTAQUEOPARIO*/
+*{ box-sizing: border-box; }
+body {
+  font: 16px Arial;
+
+}
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+   /* FIM DESSE CARALHO DE AUTOCOMPLETE*/
+	</style>
+</head>
+<body>
+	
+	<div class="container" id="container">
+		<div id="poke1" class="pokemon n1"></div>
+		<div id="poke2" class="pokemon n2"></div>
+		<div id="poke3" class="pokemon n3"></div>
+		<div id="poke4" class="pokemon n4"></div>
+		<div id="poke5" class="pokemon n5"></div>
+		<div id="poke6" class="pokemon n6"></div>
+
+		<div class="btn n1"><button class="blue" type="button" onclick="pokeAdd('poke1')">Add</button><br/><br class="b" /><button class="blue" type="button" onclick="pokeRemove('poke1')">Remove</button></div>
+		<div class="btn n2"><button class="blue" type="button" onclick="pokeAdd('poke2')">Add</button><br/><br class="b" /><button class="blue" type="button" onclick="pokeRemove('poke2')">Remove</button></div>
+		<div class="btn n3"><button class="blue" type="button" onclick="pokeAdd('poke3')">Add</button><br/><br class="b" /><button class="blue" type="button" onclick="pokeRemove('poke3')">Remove</button></div>
+		<div class="btn n4"><button class="blue" type="button" onclick="pokeAdd('poke4')">Add</button><br/><br class="b" /><button class="blue" type="button" onclick="pokeRemove('poke4')">Remove</button></div>
+		<div class="btn n5"><button class="blue" type="button" onclick="pokeAdd('poke5')">Add</button><br/><br class="b" /><button class="blue" type="button" onclick="pokeRemove('poke5')">Remove</button></div>
+		<div class="btn n6"><button class="blue" type="button" onclick="pokeAdd('poke6')">Add</button><br/><br class="b" /><button class="blue" type="button" onclick="pokeRemove('poke6')">Remove</button></div>
+		
+		<form autocomplete="off" action="/action_page.php">
+			<div class="autocomplete" style="width:100px;" >
+			  <input id="poke-autocomplete" type="text" name="Pokemon" placeholder="Pokemon">
+			</div>
+			<input type="submit">
+		  </form>
+
+		<button type="button" onclick="testCookie()">Test</button> 
+		<select name="tests" id="test">
+			<option value="poke1">1</option>
+			<option value="poke2">2</option>
+			<option value="poke3">3</option>
+			<option value="poke4">4</option>
+			<option value="poke5">5</option>
+			<option value="poke6">6</option>
+		</select>
+		<br/><br/>
+
+		<button type="button" class=" blue" onclick="changeColor()">BG Color</button> <input id="colorpicker" type="color" value="#B0CE7A"> <p class="color" id="color"></p><br/><br class="b" />
+		<button type="button" class=" blue" onclick="resetColor()">Reset</button>
+		<br/><br/>
+
+		<button type="button" class=" blue large" onclick="toggleOverlay()">Show/Hide Overlay</button>
+
+		<!-- <select class="select blue" name="team" id="poke-dropdown"></select> -->
+
+	</div>
+	
+<script type="text/javascript">
+
+let dropdown = document.getElementById('poke-autocomplete');
+// ropdown.length = 0;
+
+let defaultOption = document.createElement('option');
+defaultOption.text = 'Choose your Pokémon';
+// defaultOption.value = 0;
+
+// dropdown.add("0");
+// dropdown.selectedIndex = 0;
+
+const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=11000';
+
+const request = new XMLHttpRequest();
+request.open('GET', url, true);
+
+request.onload = function() {
+  if (request.status === 200) {
+    const dataPoke = JSON.parse(request.responseText);
+
+    let option;
+	var listPoke = []; //CRIACAO DO ARRAY PARA O AUTOCOMPLETE
+    for (let i = 0; i < dataPoke.count; i++) {
+      option = document.createElement('option');
+      option.text = dataPoke.results[i].name;
+      option.value = dataPoke.results[i].url;
+    //   dropdown.add(option);
+	  listPoke.push(option.text + " N:" + option.value.replace("https://pokeapi.co/api/v2/pokemon/","").replace("/","")); // POPULANDO O ARRAY COM OS POKEMON
+	  
+    }
+	autocomplete(document.getElementById("poke-autocomplete"), listPoke) // MONTANDO O AUTOCOMPLETE 
+   } else {
+
+  }   
+}
+request.onerror = function() {
+  console.error('An error occurred fetching the JSON from ' + url);
+};
+
+request.send();
+
+// Dropdown population finish -----
+
+function testCookie() {
+	debugger
+  var slot = document.getElementById('test').value;
+  var poke = localStorage.getItem(slot);
+  if (poke != "") {
+     alert("Pókémon number " + slot.substr(4, 1) + " is " + poke);
+  } else {
+     return;
+  }
+}
+
+function changeColor() {
+	debugger
+	var color = document.getElementById("colorpicker").value;
+	document.getElementById("color").innerHTML = color;
+    document.body.style.backgroundColor = color;
+}
+
+function resetColor() {
+    document.body.style.backgroundColor = "transparent";
+}
+
+function toggleOverlay() {
+	debugger
+	var bg = document.getElementById("container");
+	if (bg.style.backgroundImage != "none") {
+		bg.style.backgroundImage = "none";
+	} else {
+		bg.style.backgroundImage = "url(\'_resources/DS2.png\')";
+	}
+}
+
+function pokeAdd(slot) {
+	debugger
+	var newpoke = document.getElementById("poke-autocomplete").value;
+	newpokeValue = newpoke.split(":").pop(); //GAMBEARRA BRABA PRA PEGAR O BENDITO NUMERO
+
+	if (newpokeValue == null || newpokeValue == 0) 
+        document.getElementById(slot).innerHTML = "";
+	else if(newpokeValue == 9999){
+		document.getElementById(slot).innerHTML = "<img src=\"_resources/Poke_Egg.png\">";
+		}
+	else if(newpokeValue < 650)	 {
+		 document.getElementById(slot).innerHTML = "<img src=\"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/" + newpokeValue + ".gif\">";
+     }
+	 else if (newpokeValue >= 650)	 {
+		document.getElementById(slot).innerHTML = "<img src=\"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/" + newpokeValue + ".png\">";
+	}
+	debugger
+	document.getElementById("poke-autocomplete").value = "";
+ }
+
+function pokeRemove(slot) {
+	debugger
+	document.getElementById(slot).innerHTML = "";
+	localStorage.removeItem(slot);
+}
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+}
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
+    closeAllLists(e.target);	
+
+});
+}
+
+window.onload = (
+	function cookieRetrieval() {
+		var i;
+		for (i = 1; i < 7; i++) {
+			let divId = "poke" + i;
+			let divContent = document.getElementById(divId);
+			let cookieContent = localStorage.getItem(divId);
+			if (cookieContent == null || cookieContent == 0) {
+
+				divContent = "<img src=\"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/" + i + ".gif\">"
+					
+				}
+			}
+
+		}	
+);
+</script>
+
+</body>
+</html>
